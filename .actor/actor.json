@@ -1,0 +1,19 @@
+{
+    "actorSpecification": 1,
+    "name": "semrush-seo-pro",
+    "title": "Semrush SEO API Pro - Keywords, Domains, Competitors & Backlinks",
+    "description": "Semrush keyword research without a subscription: keyword ideas with volume, KD, CPC, intent and trend; domain overview with authority score, traffic and AI traffic; organic competitors; backlinks. 47+ countries, batches, filters.",
+    "version": "1.0",
+    "buildTag": "latest",
+    "meta": {
+        "templateId": "js-empty"
+    },
+    "input": "./input_schema.json",
+    "output": "./output_schema.json",
+    "storages": {
+        "dataset": "./dataset_schema.json"
+    },
+    "defaultMemoryMbytes": 512,
+    "minMemoryMbytes": 256,
+    "dockerfile": "../Dockerfile"
+}

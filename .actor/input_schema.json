@@ -1,0 +1,406 @@
+{
+    "title": "Semrush SEO API Pro",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+        "mode": {
+            "title": "Mode",
+            "type": "string",
+            "editor": "select",
+            "enum": [
+                "keyword",
+                "domain",
+                "competitors",
+                "backlinks"
+            ],
+            "enumTitles": [
+                "🔍 Keyword research (keyword ideas)",
+                "🌐 Domain overview",
+                "🥊 Organic competitors",
+                "🔗 Backlinks"
+            ],
+            "default": "keyword",
+            "description": "What to get. Keyword: ideas with volume, keyword difficulty, CPC and intent for a seed keyword. Domain: authority score, backlinks, traffic trend, top keywords and competitors. Competitors: organic competitors of a domain. Backlinks: backlinks of a domain or URL."
+        },
+        "q": {
+            "title": "Query",
+            "type": "string",
+            "editor": "textfield",
+            "prefill": "running shoes",
+            "description": "One keyword (keyword mode) or one domain (other modes). Ignored when Queries is filled."
+        },
+        "queries": {
+            "title": "Queries (batch)",
+            "type": "array",
+            "editor": "stringList",
+            "default": [],
+            "description": "Many keywords or domains at once (up to 1,000). Every result row has a query field, so you can split the batch again. Duplicates are removed. Takes precedence over Query."
+        },
+        "db": {
+            "title": "Database / country",
+            "type": "string",
+            "editor": "select",
+            "enum": [
+                "us",
+                "uk",
+                "ca",
+                "au",
+                "br",
+                "fr",
+                "de",
+                "it",
+                "es",
+                "nl",
+                "se",
+                "dk",
+                "be",
+                "no",
+                "ie",
+                "ar",
+                "mx",
+                "co",
+                "cl",
+                "pe",
+                "in",
+                "sg",
+                "id",
+                "ph",
+                "my",
+                "th",
+                "vn",
+                "jp",
+                "hk",
+                "cn",
+                "tr",
+                "za",
+                "il",
+                "sa",
+                "ae",
+                "pl",
+                "cz",
+                "ro",
+                "hu",
+                "at",
+                "ch",
+                "pt",
+                "fi",
+                "gr",
+                "nz",
+                "ru",
+                "ua"
+            ],
+            "enumTitles": [
+                "United States (us)",
+                "United Kingdom (uk)",
+                "Canada (ca)",
+                "Australia (au)",
+                "Brazil (br)",
+                "France (fr)",
+                "Germany (de)",
+                "Italy (it)",
+                "Spain (es)",
+                "Netherlands (nl)",
+                "Sweden (se)",
+                "Denmark (dk)",
+                "Belgium (be)",
+                "Norway (no)",
+                "Ireland (ie)",
+                "Argentina (ar)",
+                "Mexico (mx)",
+                "Colombia (co)",
+                "Chile (cl)",
+                "Peru (pe)",
+                "India (in)",
+                "Singapore (sg)",
+                "Indonesia (id)",
+                "Philippines (ph)",
+                "Malaysia (my)",
+                "Thailand (th)",
+                "Vietnam (vn)",
+                "Japan (jp)",
+                "Hong Kong (hk)",
+                "China (cn)",
+                "Türkiye (tr)",
+                "South Africa (za)",
+                "Israel (il)",
+                "Saudi Arabia (sa)",
+                "United Arab Emirates (ae)",
+                "Poland (pl)",
+                "Czechia (cz)",
+                "Romania (ro)",
+                "Hungary (hu)",
+                "Austria (at)",
+                "Switzerland (ch)",
+                "Portugal (pt)",
+                "Finland (fi)",
+                "Greece (gr)",
+                "New Zealand (nz)",
+                "Russia (ru)",
+                "Ukraine (ua)"
+            ],
+            "default": "us",
+            "description": "Country database for keyword, competitor and domain data. Backlinks are global."
+        },
+        "type": {
+            "title": "Keyword match type",
+            "type": "string",
+            "editor": "select",
+            "enum": [
+                "phrase",
+                "exact",
+                "broad",
+                "related",
+                "questions"
+            ],
+            "enumTitles": [
+                "Phrase match (contains all seed words)",
+                "Exact match (contains the exact phrase)",
+                "Broad match (variations and synonyms)",
+                "Related keywords (topic clusters)",
+                "Questions (how, what, why…)"
+            ],
+            "default": "phrase",
+            "description": "Keyword mode only."
+        },
+        "pages": {
+            "title": "Pages per query",
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100,
+            "default": 1,
+            "description": "100 results per page (keyword ideas, competitors or backlinks). Pages are shared across a batch: a run can use up to 200 pages (20,000 rows) in total."
+        },
+        "includeSeed": {
+            "title": "Include the seed keyword itself",
+            "type": "boolean",
+            "default": false,
+            "description": "Keyword mode: adds one row with the metrics of the seed keyword (is_seed: true)."
+        },
+        "minVolume": {
+            "title": "Minimum search volume",
+            "type": "integer",
+            "minimum": 0,
+            "default": 0,
+            "sectionCaption": "Keyword filters (filtered keywords are not charged)",
+            "description": "Keyword mode. 0 = no minimum."
+        },
+        "maxVolume": {
+            "title": "Maximum search volume",
+            "type": "integer",
+            "minimum": 0,
+            "default": 0,
+            "description": "Keyword mode. 0 = no maximum."
+        },
+        "minDifficulty": {
+            "title": "Minimum keyword difficulty",
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100,
+            "default": 0,
+            "description": "Keyword difficulty (KD) 0–100. 0 = no minimum."
+        },
+        "maxDifficulty": {
+            "title": "Maximum keyword difficulty",
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100,
+            "default": 100,
+            "description": "Keyword difficulty (KD) 0–100. 100 = no maximum. Tip: 0–29 is easy, 30–49 possible, 50+ hard."
+        },
+        "minCpc": {
+            "title": "Minimum CPC (USD)",
+            "type": "string",
+            "editor": "textfield",
+            "default": "",
+            "description": "Keyword mode, e.g. 0.5. Empty = no minimum."
+        },
+        "includeWords": {
+            "title": "Must contain any of these words",
+            "type": "array",
+            "editor": "stringList",
+            "default": [],
+            "description": "Keyword mode: keep only keywords that contain at least one of these words."
+        },
+        "excludeWords": {
+            "title": "Exclude keywords containing",
+            "type": "array",
+            "editor": "stringList",
+            "default": [],
+            "description": "Keyword mode: drop keywords that contain any of these words (e.g. free, jobs)."
+        },
+        "intents": {
+            "title": "Search intent",
+            "type": "array",
+            "editor": "select",
+            "items": {
+                "type": "string",
+                "enum": [
+                    "commercial",
+                    "informational",
+                    "navigational",
+                    "transactional"
+                ],
+                "enumTitles": [
+                    "Commercial",
+                    "Informational",
+                    "Navigational",
+                    "Transactional"
+                ]
+            },
+            "default": [],
+            "description": "Keyword mode: keep only keywords with one of these intents. Empty = all."
+        },
+        "sort_by": {
+            "title": "Sort competitors by",
+            "type": "string",
+            "editor": "select",
+            "enum": [
+                "competition_level",
+                "common_keywords",
+                "traffic"
+            ],
+            "enumTitles": [
+                "Competition level",
+                "Common keywords",
+                "Organic traffic"
+            ],
+            "default": "competition_level",
+            "sectionCaption": "Competitors and backlinks",
+            "description": "Competitors mode."
+        },
+        "target": {
+            "title": "Backlinks for a specific URL",
+            "type": "string",
+            "editor": "textfield",
+            "default": "",
+            "description": "Backlinks mode: one full URL (https://example.com/page). Overrides Query/Queries."
+        },
+        "target_type": {
+            "title": "Backlink target type",
+            "type": "string",
+            "editor": "select",
+            "enum": [
+                "root_domain",
+                "domain",
+                "url"
+            ],
+            "enumTitles": [
+                "Root domain (all subdomains)",
+                "Domain / subdomain only",
+                "Exact URL"
+            ],
+            "default": "root_domain",
+            "description": "Backlinks mode."
+        },
+        "followOnly": {
+            "title": "Follow links only",
+            "type": "boolean",
+            "default": false,
+            "description": "Backlinks mode: skip nofollow links."
+        },
+        "backlinkStatus": {
+            "title": "Backlink status",
+            "type": "string",
+            "editor": "select",
+            "enum": [
+                "live",
+                "new",
+                "lost"
+            ],
+            "enumTitles": [
+                "Live",
+                "New",
+                "Lost"
+            ],
+            "default": "live",
+            "description": "Backlinks mode."
+        },
+        "onePerDomain": {
+            "title": "One backlink per referring domain",
+            "type": "boolean",
+            "default": false,
+            "description": "Backlinks mode: keep only the strongest link from each referring domain (link prospecting)."
+        },
+        "domainSource": {
+            "title": "Domain report source",
+            "type": "string",
+            "editor": "select",
+            "enum": [
+                "auto",
+                "public",
+                "api"
+            ],
+            "enumTitles": [
+                "Auto: free public Semrush page, API when there is none",
+                "Public Semrush pages only",
+                "API only (exact database)"
+            ],
+            "default": "auto",
+            "sectionCaption": "Advanced",
+            "description": "Domain mode. Semrush publishes free overview pages for popular sites (the site's main market). Smaller sites, or a specific database, use the API."
+        },
+        "dataSource": {
+            "title": "Data source",
+            "type": "string",
+            "editor": "select",
+            "enum": [
+                "auto",
+                "semrush",
+                "dataforseo"
+            ],
+            "enumTitles": [
+                "Auto (best available)",
+                "Semrush API",
+                "DataForSEO"
+            ],
+            "default": "auto",
+            "description": "Which provider answers keyword, competitor and backlink queries. Every row has a source field."
+        },
+        "language": {
+            "title": "Language (DataForSEO only)",
+            "type": "string",
+            "editor": "textfield",
+            "default": "",
+            "description": "Language code for DataForSEO, e.g. en, de, fr. Empty = the database's main language."
+        },
+        "maxItems": {
+            "title": "Maximum results",
+            "type": "integer",
+            "minimum": 0,
+            "default": 0,
+            "description": "Stop after this many charged rows. 0 = no limit (Maximum cost per run still applies)."
+        },
+        "useCache": {
+            "title": "Reuse recent results",
+            "type": "boolean",
+            "default": true,
+            "description": "Answers the same query from a cache in your account's storage for faster runs. Same price either way."
+        },
+        "cacheHours": {
+            "title": "Cache lifetime (hours)",
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2160,
+            "default": 168,
+            "description": "How old a cached answer may be. 0 = always fetch fresh data."
+        },
+        "proxyConfiguration": {
+            "title": "Proxy",
+            "type": "object",
+            "editor": "proxy",
+            "default": {
+                "useApifyProxy": false
+            },
+            "description": "Only used for the free public domain pages. Usually not needed."
+        },
+        "proxyFallback": {
+            "title": "Automatic proxy fallback",
+            "type": "boolean",
+            "default": true,
+            "description": "If Semrush refuses the IP, switch to Apify datacenter, then residential proxy."
+        }
+    },
+    "required": [
+        "mode"
+    ]
+}

@@ -1,0 +1,294 @@
+{
+    "actorSpecification": 1,
+    "fields": {},
+    "views": {
+        "overview": {
+            "title": "Keywords",
+            "transformation": {
+                "fields": [
+                    "query",
+                    "phrase",
+                    "volume",
+                    "difficulty",
+                    "cpc",
+                    "competition_level",
+                    "intent_labels",
+                    "trend",
+                    "results",
+                    "serp_features",
+                    "database",
+                    "source",
+                    "error"
+                ]
+            },
+            "display": {
+                "component": "table",
+                "properties": {
+                    "query": {
+                        "label": "Query",
+                        "format": "text"
+                    },
+                    "phrase": {
+                        "label": "Keyword",
+                        "format": "text"
+                    },
+                    "volume": {
+                        "label": "Volume",
+                        "format": "number"
+                    },
+                    "difficulty": {
+                        "label": "KD %",
+                        "format": "number"
+                    },
+                    "cpc": {
+                        "label": "CPC (USD)",
+                        "format": "number"
+                    },
+                    "competition_level": {
+                        "label": "Competition",
+                        "format": "number"
+                    },
+                    "intent_labels": {
+                        "label": "Intent",
+                        "format": "array"
+                    },
+                    "trend": {
+                        "label": "12-month trend",
+                        "format": "array"
+                    },
+                    "results": {
+                        "label": "SERP results",
+                        "format": "number"
+                    },
+                    "serp_features": {
+                        "label": "SERP features",
+                        "format": "array"
+                    },
+                    "database": {
+                        "label": "DB",
+                        "format": "text"
+                    },
+                    "source": {
+                        "label": "Source",
+                        "format": "text"
+                    },
+                    "error": {
+                        "label": "Error",
+                        "format": "text"
+                    }
+                }
+            }
+        },
+        "domains": {
+            "title": "Domain overview",
+            "transformation": {
+                "fields": [
+                    "query",
+                    "authority_score",
+                    "organic_traffic",
+                    "paid_traffic",
+                    "number_of_backlinks",
+                    "referring_domains_count",
+                    "visits",
+                    "global_rank",
+                    "database",
+                    "top_keywords",
+                    "competitors",
+                    "source",
+                    "error"
+                ]
+            },
+            "display": {
+                "component": "table",
+                "properties": {
+                    "query": {
+                        "label": "Domain",
+                        "format": "text"
+                    },
+                    "authority_score": {
+                        "label": "Authority score",
+                        "format": "number"
+                    },
+                    "organic_traffic": {
+                        "label": "Organic traffic",
+                        "format": "number"
+                    },
+                    "paid_traffic": {
+                        "label": "Paid traffic",
+                        "format": "number"
+                    },
+                    "number_of_backlinks": {
+                        "label": "Backlinks",
+                        "format": "number"
+                    },
+                    "referring_domains_count": {
+                        "label": "Referring domains",
+                        "format": "number"
+                    },
+                    "visits": {
+                        "label": "Visits",
+                        "format": "number"
+                    },
+                    "global_rank": {
+                        "label": "Global rank",
+                        "format": "number"
+                    },
+                    "database": {
+                        "label": "Main market",
+                        "format": "text"
+                    },
+                    "top_keywords": {
+                        "label": "Top keywords",
+                        "format": "array"
+                    },
+                    "competitors": {
+                        "label": "Competitors",
+                        "format": "array"
+                    },
+                    "source": {
+                        "label": "Source",
+                        "format": "text"
+                    },
+                    "error": {
+                        "label": "Error",
+                        "format": "text"
+                    }
+                }
+            }
+        },
+        "competitors": {
+            "title": "Competitors",
+            "transformation": {
+                "fields": [
+                    "query",
+                    "rank",
+                    "domain",
+                    "competition_level",
+                    "common_keywords",
+                    "se_keywords",
+                    "traffic",
+                    "traffic_cost",
+                    "paid_keywords",
+                    "source",
+                    "error"
+                ]
+            },
+            "display": {
+                "component": "table",
+                "properties": {
+                    "query": {
+                        "label": "Domain",
+                        "format": "text"
+                    },
+                    "rank": {
+                        "label": "#",
+                        "format": "number"
+                    },
+                    "domain": {
+                        "label": "Competitor",
+                        "format": "text"
+                    },
+                    "competition_level": {
+                        "label": "Competition level",
+                        "format": "number"
+                    },
+                    "common_keywords": {
+                        "label": "Common keywords",
+                        "format": "number"
+                    },
+                    "se_keywords": {
+                        "label": "Organic keywords",
+                        "format": "number"
+                    },
+                    "traffic": {
+                        "label": "Traffic",
+                        "format": "number"
+                    },
+                    "traffic_cost": {
+                        "label": "Traffic cost (USD)",
+                        "format": "number"
+                    },
+                    "paid_keywords": {
+                        "label": "Paid keywords",
+                        "format": "number"
+                    },
+                    "source": {
+                        "label": "Source",
+                        "format": "text"
+                    },
+                    "error": {
+                        "label": "Error",
+                        "format": "text"
+                    }
+                }
+            }
+        },
+        "backlinks": {
+            "title": "Backlinks",
+            "transformation": {
+                "fields": [
+                    "query",
+                    "page_ascore",
+                    "source_url",
+                    "source_title",
+                    "target_anchor",
+                    "target_url",
+                    "nofollow",
+                    "first_seen_date",
+                    "last_seen_date",
+                    "source",
+                    "error"
+                ]
+            },
+            "display": {
+                "component": "table",
+                "properties": {
+                    "query": {
+                        "label": "Target",
+                        "format": "text"
+                    },
+                    "page_ascore": {
+                        "label": "Page AS",
+                        "format": "number"
+                    },
+                    "source_url": {
+                        "label": "Source URL",
+                        "format": "link"
+                    },
+                    "source_title": {
+                        "label": "Source title",
+                        "format": "text"
+                    },
+                    "target_anchor": {
+                        "label": "Anchor",
+                        "format": "text"
+                    },
+                    "target_url": {
+                        "label": "Target URL",
+                        "format": "link"
+                    },
+                    "nofollow": {
+                        "label": "Nofollow",
+                        "format": "boolean"
+                    },
+                    "first_seen_date": {
+                        "label": "First seen",
+                        "format": "date"
+                    },
+                    "last_seen_date": {
+                        "label": "Last seen",
+                        "format": "date"
+                    },
+                    "source": {
+                        "label": "Source",
+                        "format": "text"
+                    },
+                    "error": {
+                        "label": "Error",
+                        "format": "text"
+                    }
+                }
+            }
+        }
+    }
+}
